@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="theme-color"content="#283593">
     <title>CSS Animations @ 60fps</title>
-    <link rel="stylesheet" href="/styles.css"/>
+    <link rel="stylesheet" href="./prism.css"/>
+    <link rel="stylesheet" href="./styles.css"/>
+    <link rel="stylesheet" href="./animation-styles.css"/>
   </head>
   <body>
     <div class="main-layout">
@@ -56,8 +58,27 @@
         <p>Once those layout operations have completed any damaged pixels will need to be painted and the page must then be composited together.</p>
 
         <i><b>Source:</b> <a href="https://csstriggers.com/position" target="_blank">CSS Triggers<a></i>
+<br>
+<br>
+<i><b>Position styles:</b></i>
+<br>
+<pre><code class="language-css">/* menu element style */
+.menu {
+width: 280px;
+position: fixed;
+left: -101%; /* To hide menu initially */
+bottom: 0;
+top: 0;
+background: #fff;
+z-index: 2; /* To make menu come on top of overlay */
+transition: all 200ms ease-in;
+}
 
-        <p><i><b>Resulted timeframe:</b></i></p>
+.menu.show {
+left: 0;
+}</code> </pre>
+
+      <p><i><b>Resulted timeframe:</b></i></p>
 
         <img src="less-fps.png" style="max-width: 100%;" />
 
@@ -67,15 +88,38 @@
 
         <i><b>Source:</b> <a href="https://csstriggers.com/transform" target="_blank">CSS Triggers<a></i>
 
+        <br>
+        <br>
+        <i><b>Transform styles:</b></i>
+        <br>
+        <pre><code class="language-css">/* menu element style */
+.menu {
+  width: 280px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  background: #fff;
+  z-index: 2; /* To make menu come on top of overlay */
+  transition: all 200ms ease-in;
+  transform: translateX(-101%); /* To hide menu inititally */
+  will-change: transform; /* Hint browsers about the kind of changes to be expected on this element */
+}
+
+.menu.show {
+  transform: translateX(0);
+}</code> </pre>
+
         <p><i><b>Resulted timeframe:</b></i></p>
 
         <img src="proper-fps.png" style="max-width: 100%;" />
 
         <p><i><b>Read more:</b></i> <a target="_blank" href="https://medium.com/outsystems-experts/how-to-achieve-60-fps-animations-with-css3-db7b98610108#.4wkqhanf1">Thanks to Jose for writting a nice article</a></p>
-        <p><i><b>Reference:</b></i></p> <a target="_blank" href="https://developers.google.com/web/tools/chrome-devtools/profile/evaluate-performance/timeline-tool?hl=en">DevTools Timeline</a>
+        <p><i><b>Reference:</b></i> <a target="_blank" href="https://developers.google.com/web/tools/chrome-devtools/profile/evaluate-performance/timeline-tool?hl=en">DevTools Timeline</a></p>
 
       </div>
     </div>
+    <script type="text/javascript" src="prism.js"></script>
     <script type="text/javascript" src="main.js"></script>
   </body>
 </html>
