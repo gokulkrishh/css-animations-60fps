@@ -39,7 +39,7 @@ body {
 
 .menu {
   width: 280px;
-  position: absolute;
+  position: fixed;
   left: 0;
   bottom: 0;
   top: 0;
@@ -95,8 +95,9 @@ body {
 }
 
 .menu .logo {
+  height: 60px;
   padding: 40px;
-  background: #ccc;
+  background: #3f51b5;
 }
 
 .menu-list {
@@ -115,4 +116,20 @@ body {
 
 .menu-list a:active {
   background: #f1f1f1;
+}
+
+.main-container {
+  padding: 10px;
+  margin-bottom: 50px;
+}
+
+label {
+  font-size: 17px;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+input {
+  margin-right: 20px;
+  vertical-align: middle;
 }

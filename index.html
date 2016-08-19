@@ -2,7 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport"content="initial-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="theme-color"content="#283593">
     <title>CSS Animation 60fps</title>
     <link rel="stylesheet" href="/styles.css"/>
   </head>
@@ -16,7 +17,7 @@
 
       <div class="menu-container">
         <div class="menu">
-          <div class="logo">Logo</div>
+          <div class="logo"></div>
           <ul class="menu-list">
             <li><a href="#">Home</a></li>
             <li><a href="#">Contact</a></li>
@@ -28,10 +29,37 @@
 
       <div class="main-container">
 
+        <label for="css1">Position</label>
+        <input type="radio" name="css" id="css1" value="position">
+
+        <label for="css2">Transform</label>
+        <input type="radio" name="css" id="css2" value="transform">
+
+        <h3>Using CSS Positions:</h3>
+
+        <p>Changing position alters the geometry of the element. That means that it may affect the position or size of other elements on the page, both of which require the browser to perform layout operations.</p>
+
+        <p>Once those layout operations have completed any damaged pixels will need to be painted and the page must then be composited together.</p>
+
+        <i><b>Source:</b> <a href="https://csstriggers.com/position" target="_blank">CSS Triggers<a></i>
+
+        <p><i><b>Resulted timeframe:</b></i></p>
+
+        <img src="less-fps.png" style="max-width: 100%;" />
+
+        <h3>Using CSS Transform:</h3>
+
+        <p>Changing transform does not trigger any geometry changes or painting, which is very good. This means that the operation can likely be carried out by the compositor thread with the help of the GPU.</p>
+
+        <i><b>Source:</b> <a href="https://csstriggers.com/transform" target="_blank">CSS Triggers<a></i>
+
+        <p><i><b>Resulted timeframe:</b></i></p>
+
+        <img src="proper-fps.png" style="max-width: 100%;" />
+
       </div>
 
     </div>
-
     <script type="text/javascript" src="main.js"></script>
   </body>
 </html>
