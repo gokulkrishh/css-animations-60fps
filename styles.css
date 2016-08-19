@@ -23,6 +23,8 @@ body {
   background: #3f51b5;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.48);
   display: flex;
+  overflow: hidden;
+  z-index: 1;
 }
 
 .header-title {
@@ -33,10 +35,6 @@ body {
   padding-left: 15px;
 }
 
-.main-container {
-  margin-top: 56px;
-}
-
 .menu {
   width: 280px;
   position: fixed;
@@ -44,14 +42,27 @@ body {
   bottom: 0;
   top: 0;
   background: #fff;
+  z-index: 2;
+}
+
+.transform-property .menu.show {
+  transform: translateX(0);
+}
+
+.transform-property .menu {
+  left: 0;
   transform: translateX(-101%);
   transition: transform 200ms ease-in;
-  z-index: 2;
   will-change: transform;
 }
 
-.menu.show {
-  transform: translateX(0);
+.position-property .menu {
+  left: -101%;
+  transition: left 200ms ease-in;
+}
+
+.position-property .menu.show {
+  left: 0;
 }
 
 .menu-overlay {
@@ -94,10 +105,13 @@ body {
   padding-top: 1px;
 }
 
-.menu .logo {
-  height: 60px;
-  padding: 40px;
+.menu-sub-container {
+  height: 120px;
   background: #3f51b5;
+}
+
+.menu .logo {
+  padding: 40px;
 }
 
 .menu-list {
@@ -120,16 +134,58 @@ body {
 
 .main-container {
   padding: 10px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
+  margin-top: 50px;
 }
 
 label {
   font-size: 17px;
   display: inline-block;
   margin-top: 20px;
+  margin-right: 20px;
+  cursor: pointer;
 }
 
 input {
-  margin-right: 20px;
-  vertical-align: middle;
+  display: none;
+}
+
+.custom-radio-outer {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  border: 2px solid #3f51b5;
+  border-radius: 50%;
+  vertical-align: text-bottom;
+  margin-right: 5px;
+  position: relative;
+}
+
+.custom-radio-inner {
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  transition: all 200ms ease-in-out;
+  opacity: 0;
+  background: #303f9f;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  border: 1px solid #303f9f;
+}
+
+input:checked + .custom-radio-outer .custom-radio-inner {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  transform: scale(1);
+  opacity: 1;
+}
+
+.info i {
+  font-size: 13px;
 }
